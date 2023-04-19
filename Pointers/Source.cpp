@@ -15,9 +15,22 @@ int main() {
     cout << *&a << endl;
 #endif // POINTERS_BASICS
     const int n = 5;
-    int arr[n] = { 3, 5, 8, 13, 21 };
+    int arr[n] = {3, 5, 8, 13, 21};
     for (int i = 0; i < n; ++i) {
         cout << *(arr + i) << "\t";
+    }
+    cout << endl;
+    for (int* p_arr = arr; *p_arr != *(p_arr + n); ++p_arr) {
+        cout << *p_arr << "\t";
+    }
+    cout << endl;
+    for (int i = 0; i > -n; --i) {
+        cout << *(arr - i) << "\t";
+    }
+    cout << endl;
+    for (int* p_arr = (arr + n - 1); *p_arr != *(p_arr - n); --p_arr) {
+        cout << *p_arr << "\t";
+        *p_arr;
     }
     return 0;
 }
