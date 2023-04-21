@@ -54,13 +54,15 @@ void isEvenOrOdd(int* arr, const int n, int& even_size, int& odd_size) {
 }
 void Split(int* arr, const int n, int* arr_even, int* arr_odd) {
 	for (int i = 0, j = 0, k = 0; i < n; i++) {
-		if (*(arr + i) % 2 == 0) {
+		/*if (*(arr + i) % 2 == 0) {
 			*(arr_even + j) = *(arr + i);
 			j++;
 		}
 		else {
 			*(arr_odd + k) = *(arr + i);
 			k++;
-		}
+		}*/
+		(arr[i] % 2 == 0 ? arr_even[j++] : arr_odd[k++]) = arr[i];
 	}
+	
 }
