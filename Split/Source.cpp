@@ -5,7 +5,7 @@ using namespace std;
 
 void FillRand(int* arr, const int n);
 void Print(int* arr, const int n);
-void isEven(int* source, const int n, int& even_size, int& odd_size);
+void isEvenOrOdd(int* source, const int n, int& even_size, int& odd_size);
 void Split(int* arr, const int n, int* arr_even, int* arr_odd);
 
 void main() {
@@ -20,11 +20,10 @@ void main() {
 
 	FillRand(arr_source, n);
 	Print(arr_source, n);
-	isEven(arr_source, n, even_size, odd_size);
+	isEvenOrOdd(arr_source, n, even_size, odd_size);
 
 	int* arr_even = new int[even_size];
 	int* arr_odd = new int[odd_size];
-	
 	
 	Split(arr_source, n, arr_even, arr_odd);
 
@@ -48,7 +47,7 @@ void Print(int* arr, const int n) {
 	}
 	cout << endl;
 }
-void isEven(int* arr, const int n, int& even_size, int& odd_size) {
+void isEvenOrOdd(int* arr, const int n, int& even_size, int& odd_size) {
 	for (int i = 0; i < n; i++) {
 		*(arr + i) % 2 == 0 ? even_size++ : odd_size++;
 	}
