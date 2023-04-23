@@ -18,7 +18,7 @@ void main(){
 
 	int n = 5;
 
-	cout << "Enter array size: " << endl;
+	cout << "Введите размер массива: " << endl;
 	cin >> n;
 
 	int* arr = new int[n];
