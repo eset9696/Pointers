@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <ctime>
 
 using namespace std;
@@ -26,11 +26,11 @@ void main(){
 	Print(arr, n);
 	
 	int value;
-	cout << "Ââåäèòå äîáàâëÿåìîå çíà÷åíèå: " << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: " << endl;
 	cin >> value;
 
 	int pos;
-	cout << "Ââåäèòå íîìåð ïîçèöèè: " << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸: " << endl;
 	cin >> pos;
 
 	Push_Back(arr, n, value);
