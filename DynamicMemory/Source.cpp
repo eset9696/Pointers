@@ -7,6 +7,8 @@ using std::cout;
 using std::endl;
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
+int** Allocate(const int rows, const int cols);
+void Clear(int**& array, const int rows, const int cols);
 void FillRand(int* arr, const int n);
 void FillRand(int** arr, const int rows, const int cols);
 void Print(int* arr, const int n);
@@ -75,11 +77,8 @@ void main(){
 	int pos = 3;
 
 	//Создаем двумерный динамический массив
-	int** array = new int*[rows];
-	for (int i = 0; i < rows; i++)
-	{
-		array[i] = new int[cols];
-	}
+	
+	int** array = Allocate(rows, cols);
 
 	FillRand(array, rows, cols);
 	Print(array, rows, cols);
@@ -94,6 +93,17 @@ void main(){
 	Print(array, rows, cols);
 
 	//Удаляем двумерный динамический массив
+	Clear(array, rows, cols);
+}
+int** Allocate(const int rows, const int cols) {
+	int** array = new int* [rows];
+	for (int i = 0; i < rows; i++)
+	{
+		array[i] = new int[cols];
+	}
+	return array;
+}
+void Clear(int**& array, const int rows, const int cols) {
 	for (int i = 0; i < rows; i++)
 	{
 		delete[] array[i];
@@ -152,22 +162,14 @@ void Push_Back(int*& array, int& size, int& value) {
 	size++;
 }
 void Push_Back_Rows(int**& array, int& rows, const int cols) {
-	int** buffer = new int*[rows + 1];
-	for (int i = 0; i < rows + 1; i++)
-	{
-		buffer[i] = new int[cols];
-	}
+	int** buffer = Allocate(rows + 1, cols);
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++) {
 			buffer[i][j] = array[i][j];
 		}
 	}
-	for (int i = 0; i < rows; i++)
-	{
-		delete[] array[i];
-	}
-	delete[] array;
+	Clear(array, rows, cols);
 	array = buffer;
 	buffer = nullptr;
 	for (int i = 0; i < cols; i++)
@@ -189,29 +191,21 @@ void Push_Front(int*& array, int& size, int& value){
 	array[0] = value;
 }
 void Push_Front_Rows(int**& array, int& rows, const int cols) {
-	int** buffer = new int* [rows + 1];
-	for (int i = 0; i < rows + 1; i++)
-	{
-		buffer[i] = new int[cols];
-	}
-	for (int i = 1; i < rows + 1; i++)
+	rows++;
+	int** buffer = Allocate(rows, cols);
+	for (int i = 1; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++) {
 			buffer[i][j] = array[i - 1][j];
 		}
 	}
-	for (int i = 0; i < rows; i++)
-	{
-		delete[] array[i];
-	}
-	delete[] array;
+	Clear(array, rows - 1, cols);
 	array = buffer;
 	buffer = nullptr;
 	for (int i = 0; i < cols; i++)
 	{
 		array[0][i] = 0;
 	}
-	rows++;
 }
 void Insert(int*& array, int& size, int& value, int& pos) {
 	size++;
@@ -224,11 +218,7 @@ void Insert(int*& array, int& size, int& value, int& pos) {
 	buffer = nullptr;
 }
 void Insert_Row(int**& array, int& rows, const int& cols, const int& pos) {
-	int** buffer = new int* [rows + 1];
-	for (int i = 0; i < rows + 1; i++)
-	{
-		buffer[i] = new int[cols];
-	}
+	int** buffer = Allocate(rows + 1, cols);
 	for (int i = 0; i < pos; i++)
 	{
 		for (int j = 0; j < cols; j++) {
@@ -241,11 +231,7 @@ void Insert_Row(int**& array, int& rows, const int& cols, const int& pos) {
 			buffer[i][j] = array[k][j];
 		}
 	}
-	for (int i = 0; i < rows; i++)
-	{
-		delete[] array[i];
-	}
-	delete[] array;
+	Clear(array, rows, cols);
 	array = buffer;
 	buffer = nullptr;
 	for (int i = 0; i < cols; i++)
