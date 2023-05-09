@@ -5,8 +5,10 @@ using namespace std;
 using std::cin;
 using std::cout;
 using std::endl;
+
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
+
 int** Allocate(const int rows, const int cols);
 void Clear(int**& array, const int rows, const int cols);
 void FillRand(int* arr, const int n);
@@ -78,20 +80,18 @@ void main(){
 
 #endif // DYNAMIC_MEMORY_2
 
-
-
-	
 	int rows = 4;
 	int cols = 5;
 	int pos = 3;
 
 	//Создаем двумерный динамический массив
-	
 	int** array = Allocate(rows, cols);
+
 	//Заполняем массив случайными значениями
 	FillRand(array, rows, cols);
 	Print(array, rows, cols);
 	
+	//Добавляем нулевые строки
 	Push_Row_Back(array, rows, cols);
 	Print(array, rows, cols);
 
@@ -101,24 +101,7 @@ void main(){
 	Insert_Row(array, rows, cols, pos);
 	Print(array, rows, cols);
 
-	Push_Col_Back(array, rows, cols);
-	Print(array, rows, cols);
-
-	Push_Col_Front(array, rows, cols);
-	Print(array, rows, cols);
-
-	Insert_Col(array, rows, cols, pos);
-	Print(array, rows, cols);
-
-	Erase_Col(array, rows, cols, pos);
-	Print(array, rows, cols);
-
-	Pop_Col_Front(array, rows, cols);
-	Print(array, rows, cols);
-
-	Pop_Col_Back(array, rows, cols);
-	Print(array, rows, cols);
-
+	// Удаляем добавленные нулевые строки
 	Erase_Row(array, rows, cols, pos);
 	Print(array, rows, cols);
 
@@ -128,7 +111,25 @@ void main(){
 	Pop_Row_Back(array, rows, cols);
 	Print(array, rows, cols);
 
+	//Добавляем нулевые столбцы
+	Push_Col_Back(array, rows, cols);
+	Print(array, rows, cols);
 
+	Push_Col_Front(array, rows, cols);
+	Print(array, rows, cols);
+
+	Insert_Col(array, rows, cols, pos);
+	Print(array, rows, cols);
+	
+	//Удаляем нулевые столбцы
+	Erase_Col(array, rows, cols, pos);
+	Print(array, rows, cols);
+
+	Pop_Col_Front(array, rows, cols);
+	Print(array, rows, cols);
+
+	Pop_Col_Back(array, rows, cols);
+	Print(array, rows, cols);
 
 	//Удаляем двумерный динамический массив
 	Clear(array, rows, cols);
