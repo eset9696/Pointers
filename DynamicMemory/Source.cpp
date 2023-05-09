@@ -74,11 +74,9 @@ void main(){
 	Print(arr, n);
 
 	delete[] arr;
-#endif // DYNAMIC_MEMORY_1
+#endif DYNAMIC_MEMORY_1
 
 #ifdef DYNAMIC_MEMORY_2
-
-#endif // DYNAMIC_MEMORY_2
 
 	int rows = 4;
 	int cols = 5;
@@ -133,6 +131,7 @@ void main(){
 
 	//Удаляем двумерный динамический массив
 	Clear(array, rows, cols);
+#endif // DYNAMIC_MEMORY_2
 }
 int** Allocate(const int rows, const int cols) {
 	int** array = new int* [rows];
