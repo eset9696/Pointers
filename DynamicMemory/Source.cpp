@@ -38,7 +38,7 @@ void main(){
 	setlocale(LC_ALL, "");
 	srand(time(0));
 #ifdef DYNAMIC_MEMORY_1
-	int n = 5;
+	int n;
 
 	cout << "Введите размер массива: " << endl;
 	cin >> n;
@@ -52,19 +52,24 @@ void main(){
 	cin >> value;
 
 	int pos;
-	cout << "Введите номер позиции: " << endl;
-	cin >> pos;
+	
 
 	Push_Back(arr, n, value);
 	Print(arr, n);
 
+	cout << "Введите добавляемое значение: " << endl;
+	cin >> value;
+
 	Push_Front(arr, n, value);
 	Print(arr, n);
 
-	Insert(arr, n, value, pos);
-	Print(arr, n);
+	cout << "Введите добавляемое значение: " << endl;
+	cin >> value;
 
-	Pop_Back(arr, n);
+	cout << "Введите номер позиции: " << endl;
+	cin >> pos;
+
+	Insert(arr, n, value, pos);
 	Print(arr, n);
 
 	Erase(arr, n, pos);
@@ -73,14 +78,23 @@ void main(){
 	Pop_Front(arr, n);
 	Print(arr, n);
 
+	Pop_Back(arr, n);
+	Print(arr, n);
+
 	delete[] arr;
+
 #endif DYNAMIC_MEMORY_1
 
 #ifdef DYNAMIC_MEMORY_2
 
-	int rows = 4;
-	int cols = 5;
-	int pos = 3;
+	int rows;
+	int cols;
+	int pos;
+
+	cout << "Введите количество строк массива: " << endl;
+	cin >> rows;
+	cout << "Введите количество столбцов массива: " << endl;
+	cin >> cols;
 
 	//Создаем двумерный динамический массив
 	int** array = Allocate(rows, cols);
@@ -95,6 +109,9 @@ void main(){
 
 	Push_Row_Front(array, rows, cols);
 	Print(array, rows, cols);
+
+	cout << "Введите индекс строки в которую нужно вставить нулевую строку: " << endl;
+	cin >> pos;
 
 	Insert_Row(array, rows, cols, pos);
 	Print(array, rows, cols);
@@ -116,6 +133,9 @@ void main(){
 	Push_Col_Front(array, rows, cols);
 	Print(array, rows, cols);
 
+	cout << "Введите индекс стобца в который нужно вставить нулевой столбец: " << endl;
+	cin >> pos;
+
 	Insert_Col(array, rows, cols, pos);
 	Print(array, rows, cols);
 	
@@ -131,6 +151,7 @@ void main(){
 
 	//Удаляем двумерный динамический массив
 	Clear(array, rows, cols);
+
 #endif // DYNAMIC_MEMORY_2
 }
 int** Allocate(const int rows, const int cols) {
