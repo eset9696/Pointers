@@ -63,7 +63,7 @@ void Erase_Col(T**& array, const int& rows, int& cols, const int& pos);
 void main(){
 	setlocale(LC_ALL, "");
 	srand(time(0));
-	typedef double DataType;
+	typedef int DataType;
 #ifdef DYNAMIC_MEMORY_1
 	int n = 5;
 
@@ -339,6 +339,7 @@ void Pop_Back(T*& array, int& size) {
 }
 template <typename T>
 void Pop_Row_Back(T**& array, int& rows, const int& cols) {
+	delete[] array[rows - 1];
 	Pop_Back(array, rows);
 }
 template <typename T>
@@ -361,6 +362,7 @@ void Pop_Front(T*& array, int& size) {
 }
 template <typename T>
 void Pop_Row_Front(T**& array, int& rows, const int& cols) {
+	delete[] array[0];
 	Pop_Front(array, rows);
 }
 template <typename T>
@@ -383,6 +385,7 @@ void Erase(T*& array, int& size, int pos) {
 }
 template <typename T>
 void Erase_Row(T**& array, int& rows, const int& cols, const int& pos) {
+	//delete[] array[pos];
 	Erase(array, rows, pos);
 }
 template <typename T>
