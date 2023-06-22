@@ -6,8 +6,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-//#define DYNAMIC_MEMORY_1
-#define DYNAMIC_MEMORY_2
+#define DYNAMIC_MEMORY_1
+//#define DYNAMIC_MEMORY_2
 
 
 template <typename T> T** Allocate(const int rows, const int cols);
@@ -231,12 +231,6 @@ void Print(T* arr, const int n) {
 		cout << *(arr + i) << "\t";
 	}
 	cout << endl;
-	
-	/*for (int* p_arr = arr; *p_arr != *(arr + n); p_arr++)
-	{
-		cout << *p_arr << "\t";
-	}
-	cout << endl;*/
 }
 template <typename T>
 void Print(T** array, const int rows, const int cols) {
@@ -253,13 +247,11 @@ void Print(T** array, const int rows, const int cols) {
 template <typename T> 
 void Push_Back(T*& array, int& size, T& value) {
 	T* buffer = new T[size + 1];
-	for (int i = 0; i < size; i++) {
-		buffer[i] = array[i];
+	for (int i = 0; i <= size; i++) {
+		i != size? buffer[i] = array[i]: buffer[i] = value;
 	}
 	delete[] array;
 	array = buffer;
-	buffer = nullptr; 
-	array[size] = value;
 	size++;
 }
 template <typename T>
