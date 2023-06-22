@@ -385,7 +385,7 @@ void Erase(T*& array, int& size, int pos) {
 }
 template <typename T>
 void Erase_Row(T**& array, int& rows, const int& cols, const int& pos) {
-	//delete[] array[pos];
+	delete[] array[pos];
 	Erase(array, rows, pos);
 }
 template <typename T>
